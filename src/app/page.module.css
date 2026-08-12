@@ -1,6 +1,6 @@
 .layout {
   display: grid;
-  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-columns: 50% 50%;
   gap: 48px;
   max-width: var(--max-width);
   margin: 0 auto;
