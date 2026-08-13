@@ -1,7 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
-import { motion } from "motion/react";
+import Image from "next/image";
 import { Profile } from "@/lib/data";
 import UnderlineToBackground from "./UnderlineToBackground";
 import TextType from "./TextType";
@@ -21,14 +21,15 @@ const greetings = [
 export default function Sidebar({ profile }: { profile: Profile }) {
   return (
     <aside className={styles.sidebar}>
-      <motion.div
-        className={styles.avatar}
-        whileHover={{ scale: 1.04 }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ duration: 0.2 }}
-      >
-        <img src={profile.avatar} alt={profile.name} />
-      </motion.div>
+      <div className={styles.avatar}>
+        <Image
+          src={profile.avatar}
+          alt={profile.name}
+          width={767}
+          height={767}
+          priority
+        />
+      </div>
 
 <div className={styles.identity}>
         <TextType

@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg: #ffffff;
   --fg: #1a1a1a;
@@ -8,6 +10,7 @@
   --pill-hover-bg: #1a1a1a;
   --pill-hover-fg: #ffffff;
   --cover-bg: #e8e8e8;
+  --color-red: #ef4444;
   --max-width: 1024px;
   --sidebar-width: 320px;
 }
@@ -27,6 +30,30 @@ body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  cursor: none !important;
+}
+
+.smooth-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border-radius: 50%;
+  background: var(--color-red);
+  pointer-events: none;
+  z-index: 999;
+  opacity: 1;
+  transition: opacity 0.18s ease;
+  will-change: transform, opacity;
+}
+
+.smooth-cursor--hidden {
+  opacity: 0;
 }
 
 a {

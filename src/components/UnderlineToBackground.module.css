@@ -8,7 +8,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  background-color: #ef4444;
+  background-color: var(--color-red);
   pointer-events: none;
 }
 
