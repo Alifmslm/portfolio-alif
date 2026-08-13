@@ -24,22 +24,46 @@
   object-fit: cover;
 }
 
+
 .identity h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
+  letter-spacing: 0.25px;
+}
+
+.text_animate {
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.2;
+  color: var(--muted)
+}
+
+.tagline {
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .identity p {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 12px;
   font-weight: 300;
 }
 
 .bio {
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 12px;
   font-weight: 300;
+}
+
+.socials {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.socialLink {
+  color: #ef4444;
+  font-weight: 500;
 }
 
 @media (max-width: 820px) {
