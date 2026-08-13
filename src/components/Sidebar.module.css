@@ -14,7 +14,7 @@
   height: 96px;
   border-radius: 5px;
   overflow: hidden;
-  background: var(--cover-bg);
+  background: var(--color-red);
   cursor: pointer;
 }
 
@@ -62,8 +62,8 @@
 }
 
 .socialLink {
-  color: #ef4444;
-  font-weight: 500;
+  color: var(--color-red);
+  font-weight: 400;
 }
 
 @media (max-width: 820px) {

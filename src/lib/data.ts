@@ -28,7 +28,7 @@ export const profile: Profile = {
   name: "Nice to Meet You",
   tagline: "I'm Alif, Trained as a designer and ended up shipping the code too :)",
   bio: "I move between research, prototyping, usability testing, and code, chasing how a rough idea becomes an interface people actually enjoy using \n \n from wedding invitations to satellite dashboards.\n Based in Bandung, Indonesia 🇮🇩.",
-  avatar: "https://picsum.photos/seed/johndoe-avatar/192/192",
+  avatar: "/avatar_profile.webp",
   socials: [
     { label: "Email", href: "mailto:hello@example.com" },
     { label: "LinkedIn", href: "#" },

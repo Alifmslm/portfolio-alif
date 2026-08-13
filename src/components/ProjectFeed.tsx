@@ -16,13 +16,9 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.28, ease: "easeOut" }}
         >
-          <motion.div
-            className={styles.cover}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.2 }}
-          >
+          <div className={styles.cover}>
             <img src={project.cover} alt={project.title} />
-          </motion.div>
+          </div>
 
           <div className={styles.copy}>
             <h2 className={styles.title}>{project.title}</h2>

@@ -5,6 +5,7 @@ import "@fontsource/stack-sans-text/500.css";
 import "@fontsource/stack-sans-text/600.css";
 import "@fontsource/stack-sans-text/700.css";
 import type { Metadata } from "next";
+import SmoothCursor from "@/components/smooth-cursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <SmoothCursor />
+      </body>
     </html>
   );
 }
