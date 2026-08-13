@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import { Project } from "@/lib/data";
-import Pill from "./Pill";
 import styles from "./ProjectFeed.module.css";
 
 export default function ProjectFeed({ projects }: { projects: Project[] }) {
@@ -25,12 +24,36 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
             <img src={project.cover} alt={project.title} />
           </motion.div>
 
-          <h2 className={styles.title}>{project.title}</h2>
+          <div className={styles.copy}>
+            <h2 className={styles.title}>{project.title}</h2>
 
-          <div className="pill-row">
-            <Pill>{project.company}</Pill>
-            <Pill>{project.type}</Pill>
-            <Pill>{project.status}</Pill>
+            <p className={styles.description}>{project.description}</p>
+          </div>
+
+          <div className={styles.meta}>
+            <span className={styles.metaItem}>{project.company}</span>
+            <span className={styles.separator} aria-hidden="true" />
+            <span className={styles.metaItem}>{project.type}</span>
+            <span className={styles.separator} aria-hidden="true" />
+            <span className={styles.status}>
+              <span
+                className={`${styles.statusDot} ${
+                  project.status === "Shipped"
+                    ? styles.shippedDot
+                    : styles.exploringDot
+                }`}
+                aria-hidden="true"
+              />
+              <span
+                className={
+                  project.status === "Shipped"
+                    ? styles.shippedText
+                    : styles.exploringText
+                }
+              >
+                {project.status}
+              </span>
+            </span>
           </div>
         </motion.article>
       ))}
