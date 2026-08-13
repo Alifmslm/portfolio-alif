@@ -40,16 +40,29 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 24px;
-  height: 24px;
-  margin: -12px 0 0 -12px;
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
   border-radius: 50%;
-  background: var(--color-red);
+  border: 2px solid var(--color-red);
+  background: transparent;
   pointer-events: none;
   z-index: 999;
   opacity: 1;
   transition: opacity 0.18s ease;
-  will-change: transform, opacity;
+  will-change: transform;
+}
+
+.smooth-cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--color-red);
+  will-change: transform;
 }
 
 .smooth-cursor--hidden {
