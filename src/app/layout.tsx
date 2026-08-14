@@ -9,7 +9,7 @@ import SmoothCursor from "@/components/smooth-cursor";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "John Doe — Portfolio",
+  title: "alifolioo",
   description: "Full-Stack Developer. Clean, functional web experiences.",
 };
 

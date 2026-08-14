@@ -2,6 +2,7 @@
 
 import { Fragment } from "react";
 import Image from "next/image";
+import { motion } from "motion/react";
 import { Profile } from "@/lib/data";
 import UnderlineToBackground from "./UnderlineToBackground";
 import TextType from "./TextType";
@@ -20,7 +21,12 @@ const greetings = [
 
 export default function Sidebar({ profile }: { profile: Profile }) {
   return (
-    <aside className={styles.sidebar}>
+    <motion.aside
+      className={styles.sidebar}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className={styles.avatar}>
         <Image
           src={profile.avatar}
@@ -66,6 +72,6 @@ export default function Sidebar({ profile }: { profile: Profile }) {
           </Fragment>
         ))}
       </p>
-    </aside>
+    </motion.aside>
   );
 }
