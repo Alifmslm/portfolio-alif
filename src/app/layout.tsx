@@ -10,7 +10,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "John Doe — Portfolio",
+  title: "alifolioo",
   description: "Full-Stack Developer. Clean, functional web experiences.",
 };
 
