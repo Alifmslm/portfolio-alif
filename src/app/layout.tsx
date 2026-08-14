@@ -6,6 +6,7 @@ import "@fontsource/stack-sans-text/600.css";
 import "@fontsource/stack-sans-text/700.css";
 import type { Metadata } from "next";
 import SmoothCursor from "@/components/smooth-cursor";
+import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,10 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");if(t){document.documentElement.setAttribute("data-theme",t)}else{document.documentElement.setAttribute("data-theme",window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body>
         {children}
         <SmoothCursor />
+        <ThemeToggle />
       </body>
     </html>
   );
