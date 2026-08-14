@@ -1,4 +1,4 @@
-export type ProjectType = "UI/UX Designer" | "Fullstack Developer" | "Frontend Developer" | "Backend Developer";
+export type ProjectType = "UI/UX Designer" | "Fullstack Developer" | "Frontend Developer" | "Backend Developer" | "Front-end Developer & Designer";
 export type ProjectStatus = "Shipped" | "Exploration";
 
 export interface Project {
@@ -46,26 +46,36 @@ export const projects: Project[] = [
     type: "UI/UX Designer",
     status: "Shipped",
     description:
-      "Designed digital wedding invitations that blend personal stories with elegant, shareable moments.",
+      "A Javanese-themed digital wedding invitation, turning cultural research into a fully responsive, animated experience.",
   },
   {
     id: "project-two",
-    title: "Designing a catalogue of everyday rituals for a home goods studio",
+    title: "Dietary Restriction Table: Customizable Dietary Restrictions for a Better Guest Experience",
     cover: "https://picsum.photos/seed/project-two/960/540",
-    company: "Company B",
+    company: "Momentree",
     type: "UI/UX Designer",
-    status: "Exploration",
+    status: "Shipped",
     description:
-      "An ongoing exploration of patterns, textures and objects that anchor our daily routines.",
+      "A dashboard feature that makes guest dietary data easier to read and filter for event hosts.",
   },
   {
     id: "project-three",
-    title: "The art of turning a weekend hack into a production-grade platform",
+    title: "EISD Website Redesign: Enhancing and Redesigning the Laboratory Website Experience",
     cover: "https://picsum.photos/seed/project-three/960/540",
-    company: "Company C",
-    type: "Fullstack Developer",
+    company: "EISD Laboratory",
+    type: "Front-end Developer & Designer",
     status: "Shipped",
     description:
-      "Took a scrappy prototype to a reliable, well-tested service used by thousands.",
+      "UX audit and full redesign of the lab's website, including a new Event Detail page, built end-to-end with Next.js and Tailwind CSS.",
+  },
+  {
+    id: "project-four",
+    title: "FitGoals: Community-Based Fitness Tracker with Gamification",
+    cover: "https://picsum.photos/seed/project-three/960/540",
+    company: "EISD Laboratory",
+    type: "Front-end Developer & Designer",
+    status: "Shipped",
+    description:
+      "A community-based fitness app designed in a 9-day sprint, validated at a 98% usability testing success rate.",
   },
 ];
