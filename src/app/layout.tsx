@@ -5,7 +5,6 @@ import "@fontsource/stack-sans-text/500.css";
 import "@fontsource/stack-sans-text/600.css";
 import "@fontsource/stack-sans-text/700.css";
 import type { Metadata } from "next";
-import SmoothCursor from "@/components/smooth-cursor";
 import ThemeToggle from "@/components/ThemeToggle";
 import "./globals.css";
 
@@ -30,7 +29,6 @@ export default function RootLayout({
       </head>
       <body>
         {children}
-        <SmoothCursor />
         <ThemeToggle />
       </body>
     </html>
