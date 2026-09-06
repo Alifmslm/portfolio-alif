@@ -27,7 +27,6 @@ export default function ThemeToggle() {
       className={styles.toggle}
       onClick={toggle}
       aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-      data-cursor-hide
     >
       {theme === "light" ? <Moon size={16} strokeWidth={2} /> : <Sun size={16} strokeWidth={2} />}
     </button>
