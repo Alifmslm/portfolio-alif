@@ -22,24 +22,14 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
 
           <div className={styles.copy}>
             <h2 className={styles.title}>{project.title}</h2>
-
-            <p className={styles.description}>{project.description}</p>
           </div>
 
           <div className={styles.meta}>
-            <span className={styles.metaItem}>{project.company}</span>
-            <span className={styles.separator} aria-hidden="true" />
-            <span className={styles.metaItem}>{project.type}</span>
-            <span className={styles.separator} aria-hidden="true" />
-            <span className={styles.status}>
-              <span
-                className={`${styles.statusDot} ${
-                  project.status === "Shipped"
-                    ? styles.shippedDot
-                    : styles.exploringDot
-                }`}
-                aria-hidden="true"
-              />
+            <span className={styles.metaGroup}>
+              <span className={styles.metaItem}>{project.company}</span>
+              <span className={styles.separator} aria-hidden="true" />
+              <span className={styles.metaItem}>{project.type}</span>
+              <span className={styles.separator} aria-hidden="true" />
               <span
                 className={
                   project.status === "Shipped"

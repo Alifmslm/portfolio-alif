@@ -1,17 +1,73 @@
-.layout {
-  display: grid;
-  grid-template-columns: 40% 60%;
-  gap: 56px;
+.shell {
+  display: flex;
+  flex-direction: column;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 48px 32px;
+  padding: 92px 32px 48px;
   min-height: 100vh;
 }
 
+.toggleRow {
+  position: fixed;
+  top: 16px;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.toggleRow > * {
+  pointer-events: auto;
+}
+
+.view {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.viewPanel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.aboutWrap {
+  width: 100%;
+  max-width: 520px;
+}
+
+.aboutWrap > aside {
+  position: static;
+  max-height: none;
+}
+
+.bottomFade {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 160px;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 78%);
+  pointer-events: none;
+  z-index: 40;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.bottomFadeHidden {
+  opacity: 0;
+}
+
 @media (max-width: 820px) {
-  .layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 32px 20px;
+  .shell {
+    padding: 84px 20px 40px;
+  }
+
+  .toggleRow {
+    top: 12px;
   }
 }

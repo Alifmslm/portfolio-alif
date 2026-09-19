@@ -9,22 +9,6 @@
   overflow-y: auto;
 }
 
-.avatar {
-  width: 96px;
-  height: 96px;
-  border-radius: 5px;
-  overflow: hidden;
-  background: var(--color-red);
-  cursor: pointer;
-}
-
-.avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-
 .identity h1 {
   letter-spacing: 0.25px;
 }
