@@ -3,17 +3,23 @@
   flex-direction: column;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 20px 32px 48px;
+  padding: 92px 32px 48px;
   min-height: 100vh;
 }
 
 .toggleRow {
-  position: sticky;
+  position: fixed;
   top: 16px;
+  left: 0;
+  right: 0;
   z-index: 50;
   display: flex;
   justify-content: center;
-  padding-bottom: 28px;
+  pointer-events: none;
+}
+
+.toggleRow > * {
+  pointer-events: auto;
 }
 
 .view {
@@ -58,11 +64,10 @@
 
 @media (max-width: 820px) {
   .shell {
-    padding: 16px 20px 40px;
+    padding: 84px 20px 40px;
   }
 
   .toggleRow {
     top: 12px;
-    padding-bottom: 24px;
   }
 }
