@@ -79,7 +79,7 @@ const UnderlineToBackground = ({
       ref={textRef}
       {...props}
     >
-      <motion.div
+      <motion.span
         className={styles.underline}
         style={{
           height: "var(--underline-height)",

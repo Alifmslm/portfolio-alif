@@ -6,6 +6,7 @@
 
 .underline {
   position: absolute;
+  display: block;
   left: 0;
   width: 100%;
   background-color: var(--color-red);
