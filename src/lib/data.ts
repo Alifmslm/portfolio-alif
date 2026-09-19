@@ -48,7 +48,7 @@ export const projects: Project[] = [
     title: "EISD Website Redesign: Enhancing and Redesigning the Laboratory Website Experience",
     cover: "/projects/cover-2.webp",
     company: "EISD Laboratory",
-    type: "Front-end Developer & Designer",
+    type: "Frontend Developer",
     status: "Shipped",
   },
   {

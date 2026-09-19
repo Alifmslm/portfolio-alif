@@ -29,16 +29,7 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
               <span className={styles.metaItem}>{project.company}</span>
               <span className={styles.separator} aria-hidden="true" />
               <span className={styles.metaItem}>{project.type}</span>
-            </span>
-            <span className={styles.status}>
-              <span
-                className={`${styles.statusDot} ${
-                  project.status === "Shipped"
-                    ? styles.shippedDot
-                    : styles.exploringDot
-                }`}
-                aria-hidden="true"
-              />
+              <span className={styles.separator} aria-hidden="true" />
               <span
                 className={
                   project.status === "Shipped"
