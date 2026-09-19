@@ -17,6 +17,7 @@
 }
 
 .view {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;

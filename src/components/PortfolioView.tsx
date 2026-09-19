@@ -16,13 +16,19 @@ interface PortfolioViewProps {
 export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
   const [view, setView] = useState<ViewId>("work");
 
+  const handleChange = (next: ViewId) => {
+    if (next === view) return;
+    setView(next);
+    window.scrollTo(0, 0);
+  };
+
   return (
     <div className={styles.shell}>
       <div className={styles.toggleRow}>
-        <ViewToggle value={view} onChange={setView} />
+        <ViewToggle value={view} onChange={handleChange} />
       </div>
       <div className={styles.view}>
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={view}
             className={styles.viewPanel}
