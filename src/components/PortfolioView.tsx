@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Profile, Project } from "@/lib/data";
 import Sidebar from "./Sidebar";
@@ -15,12 +15,30 @@ interface PortfolioViewProps {
 
 export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
   const [view, setView] = useState<ViewId>("work");
+  const [atBottom, setAtBottom] = useState(false);
 
   const handleChange = (next: ViewId) => {
     if (next === view) return;
     setView(next);
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    if (view !== "work") return;
+    const onScroll = () => {
+      setAtBottom(
+        window.innerHeight + window.scrollY >=
+          document.documentElement.scrollHeight - 24
+      );
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [view]);
 
   return (
     <div className={styles.shell}>
@@ -47,6 +65,12 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
           </motion.div>
         </AnimatePresence>
       </div>
+      {view === "work" && (
+        <div
+          className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
+          aria-hidden="true"
+        />
+      )}
     </div>
   );
 }
