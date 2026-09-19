@@ -6,8 +6,8 @@ import styles from "./ViewToggle.module.css";
 export type ViewId = "work" | "about";
 
 const SEGMENTS: { id: ViewId; label: string }[] = [
-  { id: "work", label: "Work" },
   { id: "about", label: "About" },
+  { id: "work", label: "Work" },
 ];
 
 interface ViewToggleProps {

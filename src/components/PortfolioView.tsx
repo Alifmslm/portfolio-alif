@@ -14,7 +14,7 @@ interface PortfolioViewProps {
 }
 
 export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
-  const [view, setView] = useState<ViewId>("work");
+  const [view, setView] = useState<ViewId>("about");
   const [atBottom, setAtBottom] = useState(false);
 
   const handleChange = (next: ViewId) => {
