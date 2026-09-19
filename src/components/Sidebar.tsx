@@ -1,7 +1,6 @@
 "use client";
 
 import { Fragment } from "react";
-import Image from "next/image";
 import { motion } from "motion/react";
 import { Profile } from "@/lib/data";
 import UnderlineToBackground from "./UnderlineToBackground";
@@ -27,17 +26,7 @@ export default function Sidebar({ profile }: { profile: Profile }) {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <div className={styles.avatar}>
-        <Image
-          src={profile.avatar}
-          alt={profile.name}
-          width={767}
-          height={767}
-          priority
-        />
-      </div>
-
-<div className={styles.identity}>
+      <div className={styles.identity}>
         <TextType
           className={styles.text_animate}
           text={greetings}
