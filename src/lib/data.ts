@@ -68,3 +68,60 @@ export const projects: Project[] = [
     status: "Exploration",
   },
 ];
+
+export interface ExperienceStat {
+  value: string;
+  label: string;
+}
+
+export interface Experience {
+  id: string;
+  period: string;
+  company: string;
+  role: string;
+  description: string;
+  stats: ExperienceStat[];
+  highlights: string[];
+}
+
+export const experiences: Experience[] = [
+  {
+    id: "exp-one",
+    period: "2024 – 2025",
+    company: "Company",
+    role: "Role",
+    description: "Two short lines describing the work and its impact.",
+    stats: [
+      { value: "XX+", label: "Metric" },
+      { value: "XX%", label: "Metric" },
+      { value: "XX", label: "Metric" },
+    ],
+    highlights: ["Highlight one", "Highlight two", "Highlight three"],
+  },
+  {
+    id: "exp-two",
+    period: "2023 – 2024",
+    company: "Company",
+    role: "Role",
+    description: "Two short lines describing the work and its impact.",
+    stats: [
+      { value: "XX+", label: "Metric" },
+      { value: "XX%", label: "Metric" },
+      { value: "XX", label: "Metric" },
+    ],
+    highlights: ["Highlight one", "Highlight two", "Highlight three"],
+  },
+  {
+    id: "exp-three",
+    period: "2021 – 2023",
+    company: "Company",
+    role: "Role",
+    description: "Two short lines describing the work and its impact.",
+    stats: [
+      { value: "XX+", label: "Metric" },
+      { value: "XX%", label: "Metric" },
+      { value: "XX", label: "Metric" },
+    ],
+    highlights: ["Highlight one", "Highlight two", "Highlight three"],
+  },
+];

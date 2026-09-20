@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { Profile } from "@/lib/data";
 import UnderlineToBackground from "./UnderlineToBackground";
 import TextType from "./TextType";
+import Experience from "./Experience";
 import styles from "./Sidebar.module.css";
 
 const greetings = [
@@ -61,6 +62,8 @@ export default function Sidebar({ profile }: { profile: Profile }) {
           </Fragment>
         ))}
       </p>
+
+      <Experience />
     </motion.aside>
   );
 }
