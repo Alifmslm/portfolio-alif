@@ -17,7 +17,7 @@
 
 .header {
   display: grid;
-  grid-template-columns: 86px 1fr 24px;
+  grid-template-columns: 1fr 24px;
   gap: 12px;
   align-items: start;
   width: 100%;
@@ -30,12 +30,18 @@
   color: var(--fg);
 }
 
+.headerMain {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
 .period {
   font-size: 12px;
   font-weight: 300;
   color: var(--muted);
   white-space: nowrap;
-  padding-top: 2px;
 }
 
 .title {
@@ -67,11 +73,28 @@
 }
 
 .collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  visibility: hidden;
+  transition: grid-template-rows 240ms var(--ease-out),
+    opacity 180ms ease-out, visibility 0s linear 240ms;
+}
+
+.collapseOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  visibility: visible;
+  transition: grid-template-rows 260ms var(--ease-out),
+    opacity 220ms ease-out;
+}
+
+.collapseInner {
   overflow: hidden;
+  min-height: 0;
 }
 
 .body {
-  margin-left: 98px;
   padding-right: 36px;
   padding-bottom: 20px;
 }
@@ -84,16 +107,21 @@
 }
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 12px;
   margin-top: 14px;
+}
+
+.stat {
+  flex: 1 1 0;
+  min-width: 0;
 }
 
 .statValue {
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .statLabel {
@@ -127,14 +155,37 @@
   color: var(--muted);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .collapse,
+  .collapseOpen {
+    transition: none;
+  }
+
+  .chev {
+    transition: none;
+  }
+}
+
 .caseLink {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4px;
-  margin-top: 14px;
   font-size: 12px;
   font-weight: 500;
   color: var(--color-red);
+}
+
+.caseLink svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.caseLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .caseLink:hover {
@@ -142,14 +193,3 @@
   text-underline-offset: 3px;
 }
 
-@media (max-width: 480px) {
-  .header {
-    grid-template-columns: 72px 1fr 24px;
-    gap: 10px;
-  }
-
-  .body {
-    margin-left: 82px;
-    padding-right: 34px;
-  }
-}

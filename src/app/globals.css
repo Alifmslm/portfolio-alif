@@ -13,6 +13,7 @@
   --color-red: #ef4444;
   --max-width: 1024px;
   --sidebar-width: 320px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --theme-transition: color 0.3s ease, background-color 0.3s ease;
 }
 
