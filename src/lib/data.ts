@@ -69,19 +69,21 @@ export const projects: Project[] = [
   },
 ];
 
-export interface ExperienceStat {
+export interface ExperienceMetric {
   value: string;
   label: string;
 }
 
 export interface ExperienceImage {
   src: string;
+  alt: string;
   caption: string;
 }
 
 export interface ExperienceCaseStudy {
   label: string;
-  href: string;
+  projectId: string;
+  url: string;
 }
 
 export interface Experience {
@@ -89,70 +91,161 @@ export interface Experience {
   period: string;
   company: string;
   role: string;
-  description: string;
+  shortDescription: string;
   images: ExperienceImage[];
-  stats: ExperienceStat[];
+  metrics: ExperienceMetric[];
   highlights: string[];
-  caseStudy: ExperienceCaseStudy | null;
+  caseStudies: ExperienceCaseStudy[];
 }
 
 export const experiences: Experience[] = [
   {
-    id: "exp-one",
-    period: "2024 – 2025",
-    company: "Company",
-    role: "Role",
-    description: "Two short lines describing the work and its impact.",
+    id: "eisd-laboratory",
+    period: "Dec 2025 – Present",
+    company: "EISD Laboratory",
+    role: "Research Staff",
+    shortDescription:
+      "Audited and redesigned the EISD Laboratory website end-to-end. Shipped the redesign myself through Next.js and Tailwind CSS front-end development.",
     images: [
       {
-        src: "/projects/cover-1.webp",
-        caption: "Sample footnote — replace with a real caption.",
+        src: "/experience/eisd-laboratory/carousel-1.webp",
+        alt: "Redesigned EISD Laboratory homepage",
+        caption:
+          "Redesigned homepage with improved visual hierarchy and navigation.",
       },
       {
-        src: "/projects/cover-2.webp",
-        caption: "Sample footnote — replace with a real caption.",
+        src: "/experience/eisd-laboratory/carousel-2.webp",
+        alt: "New Event Detail page for EISD Laboratory",
+        caption:
+          "New Event Detail page filling a missing information architecture gap.",
+      },
+    ],
+    metrics: [
+      { value: "5+", label: "Usability issues fixed" },
+      { value: "10+", label: "Users validated redesign" },
+    ],
+    highlights: [
+      "Conducted a full UX audit on the lab's website",
+      "Redesigned site structure, hierarchy, and usability",
+      "Designed and built a new Event Detail page",
+      "Implemented the redesign in Next.js and Tailwind CSS",
+    ],
+    caseStudies: [
+      {
+        label: "Rebuilding the EISD Laboratory Website from the Ground Up",
+        projectId: "project-two",
+        url: "/projects/project-two",
+      },
+    ],
+  },
+  {
+    id: "motion-laboratory",
+    period: "Nov 2024 – Jun 2025",
+    company: "Motion Laboratory",
+    role: "UI/UX Design Mentee",
+    shortDescription:
+      "Led a 3-designer team through a 9-day design sprint for a community fitness tracker. Turned a market gap into a validated, gamified prototype.",
+    images: [
+      {
+        src: "/experience/motion-laboratory/carousel-1.webp",
+        alt: "Fitness tracker app onboarding flow",
+        caption: "Onboarding flow for setting personalized fitness goals.",
       },
       {
-        src: "/projects/cover-3.webp",
-        caption: "Sample footnote — replace with a real caption.",
+        src: "/experience/motion-laboratory/carousel-2.webp",
+        alt: "Fitness tracker gamification screens",
+        caption: "Community and gamification features from the final prototype.",
       },
     ],
-    stats: [
-      { value: "XX+", label: "Metric" },
-      { value: "XX%", label: "Metric" },
-      { value: "XX", label: "Metric" },
+    metrics: [
+      { value: "9-day", label: "Design sprint" },
+      { value: "98.48%", label: "Usability test success rate" },
     ],
-    highlights: ["Highlight one", "Highlight two", "Highlight three"],
-    caseStudy: { label: "Designing invitation blablabla", href: "#case-study" },
+    highlights: [
+      "Initiated and led the sprint end-to-end",
+      "Identified a gap in personalized fitness tracking",
+      "Combined personal goals, community, and gamification",
+      "Delivered a validated prototype in 9 days",
+    ],
+    caseStudies: [
+      {
+        label: "Community-Based Fitness Tracker with Gamification",
+        projectId: "project-four",
+        url: "/projects/project-four",
+      },
+    ],
   },
   {
-    id: "exp-two",
-    period: "2023 – 2024",
-    company: "Company",
-    role: "Role",
-    description: "Two short lines describing the work and its impact.",
-    images: [],
-    stats: [
-      { value: "XX+", label: "Metric" },
-      { value: "XX%", label: "Metric" },
-      { value: "XX", label: "Metric" },
+    id: "momentree",
+    period: "Nov 2023 – Sep 2024",
+    company: "Momentree",
+    role: "UI/UX Designer Intern",
+    shortDescription:
+      "Designed a Javanese-themed digital wedding invitation from research to execution. Translated cultural insight into a modern, responsive experience.",
+    images: [
+      {
+        src: "/experience/momentree/carousel-1.webp",
+        alt: "Javanese wedding invitation moodboard",
+        caption: "Moodboard synthesized from 20+ traditional wedding invitations.",
+      },
+      {
+        src: "/experience/momentree/carousel-2.webp",
+        alt: "Nusantara Theme digital invitation UI",
+        caption: "Final responsive UI for the Nusantara Theme invitation.",
+      },
     ],
-    highlights: ["Highlight one", "Highlight two", "Highlight three"],
-    caseStudy: null,
+    metrics: [
+      { value: "20+", label: "Invitations researched" },
+      { value: "43K–110K", label: "Potential annual users" },
+    ],
+    highlights: [
+      "Researched 20+ traditional Indonesian wedding invitations",
+      "Built a moodboard for culturally authentic design",
+      "Delivered a fully responsive UI/UX",
+      "Reached an underserved cultural market segment",
+    ],
+    caseStudies: [
+      {
+        label: "Celebrate Your Wedding with Java's Digital Invitations",
+        projectId: "project-one",
+        url: "/projects/project-one",
+      },
+      {
+        label: "Customizable Dietary Restrictions for a Better Guest Experience",
+        projectId: "project-three",
+        url: "/projects/project-three",
+      },
+    ],
   },
   {
-    id: "exp-three",
-    period: "2021 – 2023",
-    company: "Company",
-    role: "Role",
-    description: "Two short lines describing the work and its impact.",
-    images: [],
-    stats: [
-      { value: "XX+", label: "Metric" },
-      { value: "XX%", label: "Metric" },
-      { value: "XX", label: "Metric" },
+    id: "pt-telkom-satelit-indonesia",
+    period: "Jul 2023 – Dec 2024",
+    company: "Telkomsat",
+    role: "UI/UX Designer Intern",
+    shortDescription:
+      "Designed Starspace's marketing site and internal deployment dashboard. Delivered a full design system to streamline developer handoff.",
+    images: [
+      {
+        src: "/experience/pt-telkom-satelit-indonesia/carousel-1.webp",
+        alt: "Starspace marketing website design",
+        caption: "Marketing site covering the full customer acquisition flow.",
+      },
+      {
+        src: "/experience/pt-telkom-satelit-indonesia/carousel-2.webp",
+        alt: "Starspace deployment monitoring dashboard",
+        caption: "Real-time dashboard for tracking Starspace deployments.",
+      },
     ],
-    highlights: ["Highlight one", "Highlight two", "Highlight three"],
-    caseStudy: null,
+    metrics: [
+      { value: "50+", label: "Responsive screens delivered" },
+      { value: "Full", label: "Design system & docs shipped" },
+    ],
+    highlights: [
+      "Designed the end-to-end marketing website",
+      "Designed the order, install, and monitoring dashboard",
+      "Produced a complete design system and documentation",
+      "Established a clear design-to-development workflow",
+    ],
+    caseStudies: [],
   },
 ];

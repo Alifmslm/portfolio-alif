@@ -53,9 +53,9 @@ export default function ImageCarousel({ images, label }: ImageCarouselProps) {
             <div
               key={`${img.caption}-${i}`}
               className={`${styles.card} ${single ? styles.single : ""}`}
-              role="group"
-              aria-roledescription="slide"
-              aria-label={`${i + 1} of ${images.length}`}
+            role="group"
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${images.length}: ${img.alt}`}
             >
               <ImageIcon
                 size={24}
@@ -68,7 +68,7 @@ export default function ImageCarousel({ images, label }: ImageCarouselProps) {
         </div>
       </div>
       <p className={styles.caption} aria-live="polite">
-        Fig. {index + 1} — {current.caption}
+        {current.caption}
       </p>
     </div>
   );
