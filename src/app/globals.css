@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
+  --bg: #fdfcfc;
   --fg: #1a1a1a;
   --muted: #6b6b6b;
   --border: #e6e6e6;
@@ -13,6 +13,7 @@
   --color-red: #ef4444;
   --max-width: 1024px;
   --sidebar-width: 320px;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --theme-transition: color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -37,11 +38,14 @@
 
 html {
   scrollbar-gutter: stable;
+}
+
+* {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-html::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 

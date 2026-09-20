@@ -16,24 +16,24 @@ interface PortfolioViewProps {
 export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
   const [view, setView] = useState<ViewId>("about");
   const [atBottom, setAtBottom] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const updateAtBottom = () => {
-    setAtBottom(
-      window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 24
-    );
+  const updateFadeVisibility = () => {
+    const { scrollY, innerHeight } = window;
+    const scrollHeight = document.documentElement.scrollHeight;
+    setAtBottom(innerHeight + scrollY >= scrollHeight - 24);
+    setScrolled(scrollY > 24);
   };
 
   useEffect(() => {
-    if (view !== "work") return;
-    updateAtBottom();
-    window.addEventListener("scroll", updateAtBottom, { passive: true });
-    window.addEventListener("resize", updateAtBottom);
-    const ro = new ResizeObserver(updateAtBottom);
+    updateFadeVisibility();
+    window.addEventListener("scroll", updateFadeVisibility, { passive: true });
+    window.addEventListener("resize", updateFadeVisibility);
+    const ro = new ResizeObserver(updateFadeVisibility);
     ro.observe(document.body);
     return () => {
-      window.removeEventListener("scroll", updateAtBottom);
-      window.removeEventListener("resize", updateAtBottom);
+      window.removeEventListener("scroll", updateFadeVisibility);
+      window.removeEventListener("resize", updateFadeVisibility);
       ro.disconnect();
     };
   }, [view]);
@@ -52,7 +52,7 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            onAnimationComplete={updateAtBottom}
+            onAnimationComplete={updateFadeVisibility}
           >
             {view === "work" ? (
               <ProjectFeed projects={projects} />
@@ -64,12 +64,14 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
           </motion.div>
         </AnimatePresence>
       </div>
-      {view === "work" && (
-        <div
-          className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
-          aria-hidden="true"
-        />
-      )}
+      <div
+        className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
+        aria-hidden="true"
+      />
+      <div
+        className={`${styles.topFade} ${scrolled ? "" : styles.topFadeHidden}`}
+        aria-hidden="true"
+      />
     </div>
   );
 }
