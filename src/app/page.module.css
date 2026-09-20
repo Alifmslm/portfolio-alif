@@ -64,10 +64,11 @@
 
 @media (max-width: 820px) {
   .shell {
-    padding: 84px 20px 40px;
+    padding: 16px 20px 96px;
   }
 
   .toggleRow {
-    top: 12px;
+    top: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom));
   }
 }
