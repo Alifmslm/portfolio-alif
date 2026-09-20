@@ -26,7 +26,6 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
   };
 
   useEffect(() => {
-    if (view !== "work") return;
     updateFadeVisibility();
     window.addEventListener("scroll", updateFadeVisibility, { passive: true });
     window.addEventListener("resize", updateFadeVisibility);
@@ -65,18 +64,14 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
           </motion.div>
         </AnimatePresence>
       </div>
-      {view === "work" && (
-        <div
-          className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
-          aria-hidden="true"
-        />
-      )}
-      {view === "work" && (
-        <div
-          className={`${styles.topFade} ${scrolled ? "" : styles.topFadeHidden}`}
-          aria-hidden="true"
-        />
-      )}
+      <div
+        className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
+        aria-hidden="true"
+      />
+      <div
+        className={`${styles.topFade} ${scrolled ? "" : styles.topFadeHidden}`}
+        aria-hidden="true"
+      />
     </div>
   );
 }
