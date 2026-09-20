@@ -17,12 +17,6 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
   const [view, setView] = useState<ViewId>("about");
   const [atBottom, setAtBottom] = useState(false);
 
-  const handleChange = (next: ViewId) => {
-    if (next === view) return;
-    setView(next);
-    window.scrollTo(0, 0);
-  };
-
   useEffect(() => {
     if (view !== "work") return;
     const onScroll = () => {
@@ -43,10 +37,10 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
   return (
     <div className={styles.shell}>
       <div className={styles.toggleRow}>
-        <ViewToggle value={view} onChange={handleChange} />
+        <ViewToggle value={view} onChange={setView} />
       </div>
       <div className={styles.view}>
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={view}
             className={styles.viewPanel}
