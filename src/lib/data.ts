@@ -45,7 +45,7 @@ export const projects: Project[] = [
   },
   {
     id: "project-two",
-    title: "EISD Website Redesign: Enhancing and Redesigning the Laboratory Website Experience",
+    title: "Enhancing and Redesigning the Laboratory Website Experience",
     cover: "/projects/cover-2.webp",
     company: "EISD Laboratory",
     type: "Frontend Developer",
@@ -53,7 +53,7 @@ export const projects: Project[] = [
   },
   {
     id: "project-three",
-    title: "Dietary Restriction Table: Customizable Dietary Restrictions for a Better Guest Experience",
+    title: "Customizable Dietary Restrictions for a Better Guest Experience",
     cover: "/projects/cover-3.webp",
     company: "Momentree",
     type: "UI/UX Designer",
@@ -61,7 +61,7 @@ export const projects: Project[] = [
   },
   {
     id: "project-four",
-    title: "FitGoals: Community-Based Fitness Tracker with Gamification",
+    title: "Community-Based Fitness Tracker with Gamification",
     cover: "/projects/cover-4.webp",
     company: "Motion Laboratory",
     type: "UI/UX Designer",

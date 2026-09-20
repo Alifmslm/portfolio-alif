@@ -3,13 +3,13 @@
   flex-direction: column;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 92px 32px 48px;
+  padding: 20px 32px 96px;
   min-height: 100vh;
 }
 
 .toggleRow {
   position: fixed;
-  top: 16px;
+  bottom: 24px;
   left: 0;
   right: 0;
   z-index: 50;
@@ -23,7 +23,6 @@
 }
 
 .view {
-  position: relative;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -64,10 +63,11 @@
 
 @media (max-width: 820px) {
   .shell {
-    padding: 84px 20px 40px;
+    padding: 16px 20px 104px;
   }
 
   .toggleRow {
-    top: 12px;
+    top: auto;
+    bottom: calc(20px + env(safe-area-inset-bottom));
   }
 }

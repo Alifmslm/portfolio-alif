@@ -17,36 +17,34 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
   const [view, setView] = useState<ViewId>("about");
   const [atBottom, setAtBottom] = useState(false);
 
-  const handleChange = (next: ViewId) => {
-    if (next === view) return;
-    setView(next);
-    window.scrollTo(0, 0);
+  const updateAtBottom = () => {
+    setAtBottom(
+      window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 24
+    );
   };
 
   useEffect(() => {
     if (view !== "work") return;
-    const onScroll = () => {
-      setAtBottom(
-        window.innerHeight + window.scrollY >=
-          document.documentElement.scrollHeight - 24
-      );
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
+    updateAtBottom();
+    window.addEventListener("scroll", updateAtBottom, { passive: true });
+    window.addEventListener("resize", updateAtBottom);
+    const ro = new ResizeObserver(updateAtBottom);
+    ro.observe(document.body);
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+      window.removeEventListener("scroll", updateAtBottom);
+      window.removeEventListener("resize", updateAtBottom);
+      ro.disconnect();
     };
   }, [view]);
 
   return (
     <div className={styles.shell}>
       <div className={styles.toggleRow}>
-        <ViewToggle value={view} onChange={handleChange} />
+        <ViewToggle value={view} onChange={setView} />
       </div>
       <div className={styles.view}>
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={view}
             className={styles.viewPanel}
@@ -54,6 +52,7 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
+            onAnimationComplete={updateAtBottom}
           >
             {view === "work" ? (
               <ProjectFeed projects={projects} />
