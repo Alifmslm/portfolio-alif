@@ -74,14 +74,26 @@ export interface ExperienceStat {
   label: string;
 }
 
+export interface ExperienceImage {
+  src: string;
+  caption: string;
+}
+
+export interface ExperienceCaseStudy {
+  label: string;
+  href: string;
+}
+
 export interface Experience {
   id: string;
   period: string;
   company: string;
   role: string;
   description: string;
+  images: ExperienceImage[];
   stats: ExperienceStat[];
   highlights: string[];
+  caseStudy: ExperienceCaseStudy | null;
 }
 
 export const experiences: Experience[] = [
@@ -91,12 +103,27 @@ export const experiences: Experience[] = [
     company: "Company",
     role: "Role",
     description: "Two short lines describing the work and its impact.",
+    images: [
+      {
+        src: "/projects/cover-1.webp",
+        caption: "Sample footnote — replace with a real caption.",
+      },
+      {
+        src: "/projects/cover-2.webp",
+        caption: "Sample footnote — replace with a real caption.",
+      },
+      {
+        src: "/projects/cover-3.webp",
+        caption: "Sample footnote — replace with a real caption.",
+      },
+    ],
     stats: [
       { value: "XX+", label: "Metric" },
       { value: "XX%", label: "Metric" },
       { value: "XX", label: "Metric" },
     ],
     highlights: ["Highlight one", "Highlight two", "Highlight three"],
+    caseStudy: { label: "Designing invitation blablabla", href: "#case-study" },
   },
   {
     id: "exp-two",
@@ -104,12 +131,14 @@ export const experiences: Experience[] = [
     company: "Company",
     role: "Role",
     description: "Two short lines describing the work and its impact.",
+    images: [],
     stats: [
       { value: "XX+", label: "Metric" },
       { value: "XX%", label: "Metric" },
       { value: "XX", label: "Metric" },
     ],
     highlights: ["Highlight one", "Highlight two", "Highlight three"],
+    caseStudy: null,
   },
   {
     id: "exp-three",
@@ -117,11 +146,13 @@ export const experiences: Experience[] = [
     company: "Company",
     role: "Role",
     description: "Two short lines describing the work and its impact.",
+    images: [],
     stats: [
       { value: "XX+", label: "Metric" },
       { value: "XX%", label: "Metric" },
       { value: "XX", label: "Metric" },
     ],
     highlights: ["Highlight one", "Highlight two", "Highlight three"],
+    caseStudy: null,
   },
 ];

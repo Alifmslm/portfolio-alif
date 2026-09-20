@@ -1,0 +1,47 @@
+.carousel {
+  margin-top: 12px;
+}
+
+.frame {
+  position: relative;
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  background: var(--cover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.card.single {
+  flex-basis: 100%;
+}
+
+.placeholderIcon {
+  opacity: 0.5;
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--muted);
+}

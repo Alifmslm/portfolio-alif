@@ -94,8 +94,6 @@
   font-size: 18px;
   font-weight: 700;
   line-height: 1.2;
-  padding-bottom: 4px;
-  border-bottom: 1px solid var(--border);
 }
 
 .statLabel {
@@ -127,6 +125,21 @@
   font-weight: 300;
   line-height: 1.5;
   color: var(--muted);
+}
+
+.caseLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-red);
+}
+
+.caseLink:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 @media (max-width: 480px) {

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronDown } from "lucide-react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { experiences } from "@/lib/data";
+import ImageCarousel from "./ImageCarousel";
 import styles from "./Experience.module.css";
 
 export default function Experience() {
@@ -51,6 +52,12 @@ export default function Experience() {
                 >
                   <div className={styles.body}>
                     <p className={styles.description}>{exp.description}</p>
+                    {exp.images.length > 0 && (
+                      <ImageCarousel
+                        images={exp.images}
+                        label={`${exp.company} ${exp.role} images`}
+                      />
+                    )}
                     <div className={styles.stats}>
                       {exp.stats.map((stat) => (
                         <div key={stat.label + stat.value} className={styles.stat}>
@@ -65,6 +72,16 @@ export default function Experience() {
                         <li key={h}>{h}</li>
                       ))}
                     </ul>
+                    {exp.caseStudy && (
+                      <a href={exp.caseStudy.href} className={styles.caseLink}>
+                        <span>{exp.caseStudy.label}</span>
+                        <ArrowUpRight
+                          size={14}
+                          strokeWidth={2}
+                          aria-hidden="true"
+                        />
+                      </a>
+                    )}
                   </div>
                 </motion.div>
               )}
