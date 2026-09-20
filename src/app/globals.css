@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
+  --bg: #fdfcfc;
   --fg: #1a1a1a;
   --muted: #6b6b6b;
   --border: #e6e6e6;
@@ -37,11 +37,14 @@
 
 html {
   scrollbar-gutter: stable;
+}
+
+* {
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-html::-webkit-scrollbar {
+::-webkit-scrollbar {
   display: none;
 }
 
