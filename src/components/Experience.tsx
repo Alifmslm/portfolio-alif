@@ -6,33 +6,44 @@ import { experiences } from "@/lib/data";
 import ImageCarousel from "./ImageCarousel";
 import styles from "./Experience.module.css";
 
+const PIN_OFFSET = 112;
+
 export default function Experience() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const spacerRef = useRef<HTMLDivElement>(null);
   const seqRef = useRef(0);
+
+  const pageTop = (el: HTMLElement) => {
+    let y = 0;
+    let node: HTMLElement | null = el;
+    while (node) {
+      y += node.offsetTop;
+      node = node.offsetParent as HTMLElement | null;
+    }
+    return y;
+  };
 
   const handleToggle = (id: string) => {
     const closing = openId === id;
     seqRef.current += 1;
     const seq = seqRef.current;
-    if (spacerRef.current) spacerRef.current.style.height = "0px";
-    setOpenId(closing ? null : id);
-    if (!closing) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    // Freeze total page height while the row collapses, so the browser
-    // never clamps mid-animation and the header stays put.
-    const holdH =
-      document.getElementById(`${id}-body`)?.offsetHeight ?? 0;
-    if (spacerRef.current) spacerRef.current.style.height = `${holdH}px`;
-
-    // Release the hold once collapse finishes. No scrolling, no glide —
-    // from here the page simply settles on its own.
-    window.setTimeout(() => {
+    if (closing) {
+      setOpenId(null);
+      return;
+    }
+    const header = document.getElementById(`${id}-header`);
+    if (header) window.scrollTo(0, Math.max(0, pageTop(header) - PIN_OFFSET));
+    setOpenId(id);
+    const start = performance.now();
+    const step = (now: number) => {
       if (seqRef.current !== seq) return;
-      if (spacerRef.current) spacerRef.current.style.height = "0px";
-      window.dispatchEvent(new Event("scroll"));
-    }, 260);
+      const node = document.getElementById(`${id}-header`);
+      if (node) {
+        const want = Math.max(0, pageTop(node) - PIN_OFFSET);
+        if (window.scrollY !== want) window.scrollTo(0, want);
+      }
+      if (now - start < 320) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   };
 
   return (
@@ -44,6 +55,7 @@ export default function Experience() {
           <div key={exp.id} className={styles.item}>
             <button
               type="button"
+              id={`${exp.id}-header`}
               className={styles.header}
               aria-expanded={open}
               aria-controls={`${exp.id}-body`}
@@ -120,7 +132,6 @@ export default function Experience() {
           </div>
         );
       })}
-      <div ref={spacerRef} style={{ height: 0 }} aria-hidden="true" />
     </section>
   );
 }
