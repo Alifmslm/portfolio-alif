@@ -77,12 +77,15 @@ function ExperienceItem({
         aria-controls={`${exp.id}-body`}
         onClick={onToggle}
       >
-        <span className={styles.headerMain}>
-          <span className={styles.title}>
-            <span className={styles.company}>{exp.company}</span>
-            <span className={styles.slash} aria-hidden="true">
-              {" / "}
-            </span>
+              <span className={styles.headerMain}>
+                <span className={styles.title}>
+                  <span className={styles.logo} aria-hidden="true">
+                    {exp.company.charAt(0)}
+                  </span>
+                  <span className={styles.company}>{exp.company}</span>
+                  <span className={styles.slash} aria-hidden="true">
+                    {"/"}
+                  </span>
             <span className={styles.role}>{exp.role}</span>
           </span>
           <span className={styles.period}>{exp.period}</span>
