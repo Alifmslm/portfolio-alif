@@ -221,7 +221,7 @@ export const experiences: Experience[] = [
     id: "pt-telkom-satelit-indonesia",
     period: "Jul 2023 – Dec 2024",
     company: "Telkomsat",
-    role: "UI/UX Designer Intern",
+    role: "Product Engineer",
     shortDescription:
       "Designed Starspace's marketing site and internal deployment dashboard. Delivered a full design system to streamline developer handoff.",
     images: [
