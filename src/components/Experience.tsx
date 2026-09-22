@@ -41,7 +41,7 @@ export default function Experience() {
         const want = Math.max(0, pageTop(node) - PIN_OFFSET);
         if (window.scrollY !== want) window.scrollTo(0, want);
       }
-      if (now - start < 320) requestAnimationFrame(step);
+      if (now - start < 500) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
   };
