@@ -4,20 +4,8 @@ import { Fragment } from "react";
 import { motion } from "motion/react";
 import { Profile } from "@/lib/data";
 import UnderlineToBackground from "./UnderlineToBackground";
-import TextType from "./TextType";
 import Experience from "./Experience";
 import styles from "./Sidebar.module.css";
-
-const greetings = [
-  "Nice to Meet You",
-  "Senang Bertemu denganmu",
-  "आपसे मिलकर खुशी हुई",
-  "Schön, dich kennenzulernen",
-  "سعيد بلقائك",
-  "很高兴认识你",
-  "Приятно познакомиться",
-  "はじめまして",
-];
 
 export default function Sidebar({ profile }: { profile: Profile }) {
   return (
@@ -28,17 +16,9 @@ export default function Sidebar({ profile }: { profile: Profile }) {
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       <div className={styles.identity}>
-        <TextType
-          className={styles.text_animate}
-          text={greetings}
-          as="h1"
-          aria-label={greetings[0]}
-          typingSpeed={60}
-          deletingSpeed={28}
-          pauseDuration={2600}
-          cursorCharacter="..."
-        />
-        <h1 className={styles.tagline}>{profile.tagline}</h1>
+        <div className={styles.orb} aria-hidden="true" />
+        <h1 className={styles.name}>Alif Muslim</h1>
+        <p className={styles.roleTitle}>Product Engineer</p>
       </div>
       
       <div style={{whiteSpace: "pre-line"}}>

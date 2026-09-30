@@ -89,6 +89,11 @@ export interface ExperienceCaseStudy {
 export interface Experience {
   id: string;
   period: string;
+  location?: string;
+  logoSrc?: string;
+  logoFit?: "cover" | "contain";
+  logoScale?: number;
+  logoBg?: string;
   company: string;
   role: string;
   shortDescription: string;
@@ -102,6 +107,11 @@ export const experiences: Experience[] = [
   {
     id: "eisd-laboratory",
     period: "Dec 2025 – Present",
+    location: "Bandung, Indonesia",
+    logoSrc: "/logo-eisd.webp",
+    logoFit: "contain",
+    logoScale: 0.8,
+    logoBg: "#fff",
     company: "EISD Laboratory",
     role: "Research Staff",
     shortDescription:
@@ -141,6 +151,10 @@ export const experiences: Experience[] = [
   {
     id: "motion-laboratory",
     period: "Nov 2024 – Jun 2025",
+    location: "Bandung, Indonesia",
+    logoSrc: "/logo-motion.webp",
+    logoFit: "contain",
+    logoBg: "#fff",
     company: "Motion Laboratory",
     role: "UI/UX Design Mentee",
     shortDescription:
@@ -178,6 +192,9 @@ export const experiences: Experience[] = [
   {
     id: "momentree",
     period: "Nov 2023 – Sep 2024",
+    location: "Bristol, UK · Remote",
+    logoSrc: "/momentree_logo.webp",
+    logoScale: 1.2,
     company: "Momentree",
     role: "UI/UX Designer Intern",
     shortDescription:
@@ -220,6 +237,8 @@ export const experiences: Experience[] = [
   {
     id: "pt-telkom-satelit-indonesia",
     period: "Jul 2023 – Dec 2024",
+    location: "Bogor, Indonesia",
+    logoSrc: "/telkomsat-logo.webp",
     company: "Telkomsat",
     role: "Product Engineer",
     shortDescription:

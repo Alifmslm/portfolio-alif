@@ -5,6 +5,7 @@ import "@fontsource/stack-sans-text/500.css";
 import "@fontsource/stack-sans-text/600.css";
 import "@fontsource/stack-sans-text/700.css";
 import type { Metadata } from "next";
+import ClickRipple from "@/components/ClickRipple";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning>
         {children}
+        <ClickRipple />
       </body>
     </html>
   );
