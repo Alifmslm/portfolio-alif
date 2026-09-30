@@ -25,6 +25,14 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
     setScrolled(scrollY > 24);
   };
 
+  const handleViewChange = (next: ViewId) => {
+    if (next === view) return;
+    // Reset scroll so the incoming view always starts at the top instead
+    // of inheriting the previous view's scroll position.
+    window.scrollTo(0, 0);
+    setView(next);
+  };
+
   useEffect(() => {
     updateFadeVisibility();
     window.addEventListener("scroll", updateFadeVisibility, { passive: true });
@@ -41,17 +49,22 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
   return (
     <div className={styles.shell}>
       <div className={styles.toggleRow}>
-        <ViewToggle value={view} onChange={setView} />
+        <ViewToggle value={view} onChange={handleViewChange} />
       </div>
       <div className={styles.view}>
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={view}
             className={styles.viewPanel}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            exit={{
+              opacity: 0,
+              y: -6,
+              filter: "blur(2px)",
+              transition: { duration: 0.16, ease: [0.23, 1, 0.32, 1] },
+            }}
+            transition={{ duration: 0.32, ease: [0.23, 1, 0.32, 1] }}
             onAnimationComplete={updateFadeVisibility}
           >
             {view === "work" ? (
@@ -64,14 +77,18 @@ export default function PortfolioView({ profile, projects }: PortfolioViewProps)
           </motion.div>
         </AnimatePresence>
       </div>
-      <div
-        className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
-        aria-hidden="true"
-      />
-      <div
-        className={`${styles.topFade} ${scrolled ? "" : styles.topFadeHidden}`}
-        aria-hidden="true"
-      />
+      {view === "work" && (
+        <>
+          <div
+            className={`${styles.bottomFade} ${atBottom ? styles.bottomFadeHidden : ""}`}
+            aria-hidden="true"
+          />
+          <div
+            className={`${styles.topFade} ${scrolled ? "" : styles.topFadeHidden}`}
+            aria-hidden="true"
+          />
+        </>
+      )}
     </div>
   );
 }

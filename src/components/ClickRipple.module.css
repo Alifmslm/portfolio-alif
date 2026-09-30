@@ -1,0 +1,36 @@
+.layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--fg);
+  opacity: 0.22;
+  animation: click-ripple 300ms var(--ease-out) forwards;
+}
+
+@keyframes click-ripple {
+  from {
+    transform: scale(0.3);
+    opacity: 0.28;
+  }
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ripple {
+    animation: none;
+    display: none;
+  }
+}
