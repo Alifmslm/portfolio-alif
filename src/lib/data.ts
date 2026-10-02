@@ -25,7 +25,7 @@ export interface Profile {
 export const profile: Profile = {
   name: "Nice to Meet You",
   tagline: "I'm Alif, Trained as a designer and ended up shipping the code too :)",
-  bio: "I move between research, prototyping, usability testing, and code, chasing how a rough idea becomes an interface people actually enjoy using \n \n from wedding invitations to satellite dashboards.\n Based in Bandung, Indonesia 🇮🇩.",
+  bio: "I'm Alif, a designer with an engineering mindset, building tools and products that make things work better.\n\nI enjoy turning ideas into working interfaces through rapid prototyping, frontend development, and thoughtful user flows. I care about the details people notice—and the ones they don't, always trying to balance aesthetics with function.\n\nCurrently, I work as a research staff building tools that support the organization's operations and productivity.",
   socials: [
     { label: "Email", href: "mailto:alifmslm01@gmail.com" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/alifmslmabdrhmn/" },
