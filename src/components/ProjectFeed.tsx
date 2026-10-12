@@ -7,28 +7,6 @@ import { railVelocity } from "@/lib/liquid";
 import LiquidImage from "./LiquidImage";
 import styles from "./ProjectFeed.module.css";
 
-function Reveal({
-  children,
-  delay = 0,
-  className = "",
-}: {
-  children: React.ReactNode;
-  delay?: number;
-  className?: string;
-}) {
-  return (
-    <motion.figure
-      className={className}
-      initial={{ opacity: 0, transform: "translateX(16px)" }}
-      whileInView={{ opacity: 1, transform: "translateX(0px)" }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.28, ease: "easeOut", delay }}
-    >
-      {children}
-    </motion.figure>
-  );
-}
-
 interface LoopProject extends Project {
   loopKey: string;
   ghost: boolean;
@@ -119,77 +97,26 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
 
   return (
     <section ref={feedRef} className={styles.feed}>
-      {looped.map((project) => {
-        return (
-          <motion.article
-            key={project.loopKey}
-            aria-hidden={project.ghost || undefined}
-            className={styles.card}
-            initial={{ opacity: 0, transform: "translateX(16px)" }}
-            whileInView={{ opacity: 1, transform: "translateX(0px)" }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.28, ease: "easeOut" }}
-          >
-            {/* Same order every project: title → desc → images */}
-            <div className={styles.titleCell}>
-              <p className={styles.year}>{project.year}</p>
-              <h2 className={styles.title}>{project.title}</h2>
-            </div>
-            <div className={styles.descCell}>
-              <p className={styles.blurb}>{project.blurb}</p>
-              <div className={styles.tags}>
-                <span className={styles.metaItem}>{project.company}</span>
-                <span className={styles.separator} aria-hidden="true" />
-                <span className={styles.metaItem}>{project.type}</span>
-                <span className={styles.separator} aria-hidden="true" />
-                <span
-                  className={
-                    project.status === "Shipped"
-                      ? styles.shippedText
-                      : styles.exploringText
-                  }
-                >
-                  {project.status}
-                </span>
-              </div>
-            </div>
-            <Reveal className={styles.hero} delay={0}>
-              <LiquidImage
-                src={project.cover}
-                alt={project.title}
-                drift={1}
-                natural
-              />
-            </Reveal>
-            <Reveal className={styles.tall} delay={0.06}>
-              <LiquidImage
-                alt={`${project.title} — additional view 1`}
-                aspect="3 / 4"
-                drift={-0.7}
-                placeholder
-              />
-            </Reveal>
-            <Reveal className={styles.small} delay={0.12}>
-              <LiquidImage
-                alt={`${project.title} — additional view 2`}
-                aspect="1 / 1"
-                drift={1.35}
-                placeholder
-                caption={project.smallCaption}
-                captionAlign="center"
-              />
-            </Reveal>
-            <Reveal className={styles.wide} delay={0.18}>
-              <LiquidImage
-                alt={`${project.title} — additional view 3`}
-                aspect="16 / 10"
-                drift={0.55}
-                placeholder
-              />
-            </Reveal>
-          </motion.article>
-        );
-      })}
+      {looped.map((project, i) => (
+        <motion.article
+          key={project.loopKey}
+          aria-hidden={project.ghost || undefined}
+          className={styles.card}
+          initial={{ opacity: 0, transform: "translateX(16px)" }}
+          whileInView={{ opacity: 1, transform: "translateX(0px)" }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.28, ease: "easeOut" }}
+        >
+          <LiquidImage
+            src={project.cover}
+            alt={project.title}
+            aspect="4 / 3"
+            drift={i % 2 === 0 ? 1 : -0.7}
+          />
+          <h2 className={styles.title}>{project.title}</h2>
+          <p className={styles.role}>{project.type}</p>
+        </motion.article>
+      ))}
     </section>
   );
 }

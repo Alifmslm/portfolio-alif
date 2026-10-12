@@ -1,9 +1,8 @@
-/* One horizontal rail: Project A → B → C → D side by side,
-   scrolling inside its own column. */
+/* One horizontal rail of simple image cards scrolling inside its own column. */
 .feed {
   display: flex;
   flex-direction: row;
-  gap: 72px;
+  gap: 40px;
   align-items: center;
   width: 100%;
   max-width: none;
@@ -22,163 +21,45 @@
 }
 
 .card {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: start;
-  min-width: 0;
-  scroll-snap-align: start;
-}
-
-/* Text cells ride inside the same horizontal strip as the images */
-.titleCell {
-  flex: 0 0 240px;
-  width: 240px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
-  scroll-snap-align: start;
-}
-
-.descCell {
   flex: 0 0 300px;
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   min-width: 0;
-  padding-top: 20px;
   scroll-snap-align: start;
 }
 
-.year {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  margin: 0;
-}
-
 .title {
-  font-size: 22px;
+  font-size: 15px;
   font-weight: 600;
-  line-height: 1.25;
+  line-height: 1.4;
   letter-spacing: -0.01em;
+  color: var(--accent);
   margin: 0;
   text-wrap: balance;
 }
 
-.blurb {
-  font-size: 14px;
-  line-height: 1.55;
-  margin: 0;
-  text-wrap: pretty;
-}
-
-.tags {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.card > figure {
-  margin: 0;
-  flex: 0 0 auto;
-  min-width: 0;
-}
-
-.hero {
-  flex: 0 0 auto;
-  width: auto;
-}
-
-.tall {
-  flex-basis: 260px;
-  width: 260px;
-}
-
-.small {
-  flex-basis: 240px;
-  width: 240px;
-}
-
-.wide {
-  flex-basis: 420px;
-  width: 420px;
-}
-
-.metaItem {
-  font-size: 11px;
+.role {
+  font-size: 12px;
   font-weight: 400;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: var(--muted);
-}
-
-.separator {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--muted);
-  opacity: 0.55;
-}
-
-.shippedText {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: #22c55e;
-}
-
-.exploringText {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: #ec4899;
+  margin: 0;
 }
 
 @media (max-width: 820px) {
   .feed {
-    gap: 48px;
-    min-height: calc(100vh - 220px);
+    gap: 32px;
+    min-height: 0;
+  }
+
+  .card {
+    flex-basis: 72vw;
+    width: 72vw;
   }
 
   .title {
-    font-size: 19px;
-  }
-
-  .titleCell {
-    flex-basis: 68vw;
-    width: 68vw;
-  }
-
-  .descCell {
-    flex-basis: 72vw;
-    width: 72vw;
-    padding-top: 0;
-  }
-
-  .tall {
-    flex-basis: 56vw;
-    width: 56vw;
-  }
-
-  .small {
-    flex-basis: 54vw;
-    width: 54vw;
-  }
-
-  .wide {
-    flex-basis: 80vw;
-    width: 80vw;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card figure {
-    opacity: 1 !important;
-    transform: none !important;
+    font-size: 14px;
   }
 }
