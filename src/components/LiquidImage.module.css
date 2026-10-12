@@ -20,8 +20,7 @@
   background: var(--cover-bg);
 }
 
-/* Bare mode — just the image, no box: no background, radius or clipping,
-   so the RGB fringe can bleed past the edges like the reference. */
+/* Bare mode — just the image, no box or clipping. */
 .bare {
   position: relative;
   display: inline-block;
@@ -32,11 +31,6 @@
   height: 400px;
   width: auto;
   max-width: 620px;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.bare .ghost {
   object-fit: contain;
   border-radius: 8px;
 }
@@ -59,26 +53,6 @@
   .bare:hover .imgMain {
     transform: scale(1.02);
   }
-}
-
-.ghost {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  will-change: transform, opacity;
-}
-
-/* Static color-isolating filters — never animated, so no per-frame paint cost. */
-.ghostRed {
-  filter: saturate(3) sepia(1) hue-rotate(-48deg) saturate(4) brightness(1.05);
-}
-
-.ghostCyan {
-  filter: saturate(3) sepia(1) hue-rotate(150deg) saturate(4) brightness(1.05);
 }
 
 .placeholder {
@@ -104,18 +78,6 @@
   text-align: center;
 }
 
-div.ghostRed {
-  background: rgba(255, 45, 85, 0.55);
-  filter: none;
-  mix-blend-mode: multiply;
-}
-
-div.ghostCyan {
-  background: rgba(0, 220, 255, 0.55);
-  filter: none;
-  mix-blend-mode: multiply;
-}
-
 .caption {
   margin-top: 12px;
   font-size: 12px;
@@ -137,13 +99,8 @@ div.ghostCyan {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .frame,
-  .ghost {
+  .frame {
     transform: none !important;
-  }
-
-  .ghost {
-    display: none;
   }
 
   .img:first-child {
