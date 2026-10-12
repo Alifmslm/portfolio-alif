@@ -1,19 +1,20 @@
 "use client";
 
-import { Profile } from "@/lib/data";
+import { Profile, Project } from "@/lib/data";
 import Sidebar from "./Sidebar";
+import ProjectFeed from "./ProjectFeed";
 import styles from "../app/page.module.css";
 
 interface PortfolioViewProps {
   profile: Profile;
+  projects: Project[];
 }
 
-export default function PortfolioView({ profile }: PortfolioViewProps) {
+export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
   return (
-    <div className={styles.shell}>
-      <div className={styles.aboutWrap}>
-        <Sidebar profile={profile} />
-      </div>
-    </div>
+    <main className={styles.layout}>
+      <Sidebar profile={profile} />
+      <ProjectFeed projects={projects} />
+    </main>
   );
 }
