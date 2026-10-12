@@ -70,6 +70,7 @@
   color: var(--muted);
   font-size: 12px;
   font-weight: 300;
+  max-width: 450px;
 }
 
 .socials {
