@@ -8,6 +8,9 @@ export interface Project {
   company: string;
   type: ProjectType;
   status: ProjectStatus;
+  year: string;
+  blurb: string;
+  smallCaption: string;
 }
 
 export interface SocialLink {
@@ -42,6 +45,11 @@ export const projects: Project[] = [
     company: "Momentree",
     type: "UI/UX Designer",
     status: "Shipped",
+    year: "2024",
+    blurb:
+      "A Javanese-themed digital invitation translating cultural motifs into a modern, responsive guest experience. We designed the theme, flows and how it shows up on every screen.",
+    smallCaption:
+      "We often lean into familiar formats — one idea per screen, said with confidence.",
   },
   {
     id: "project-two",
@@ -50,6 +58,11 @@ export const projects: Project[] = [
     company: "EISD Laboratory",
     type: "Frontend Developer",
     status: "Shipped",
+    year: "2025",
+    blurb:
+      "A full audit and redesign of the lab website — clearer hierarchy, a missing Event Detail page, and a front-end rebuild in Next.js and Tailwind.",
+    smallCaption:
+      "Billboards lean on bold colour and plain language. Relatable setups, not corporate tech speak.",
   },
   {
     id: "project-three",
@@ -58,6 +71,11 @@ export const projects: Project[] = [
     company: "Momentree",
     type: "UI/UX Designer",
     status: "Shipped",
+    year: "2024",
+    blurb:
+      "Custom dietary preferences for wedding guests — allergies, restrictions and notes captured early so hosts can plan with confidence.",
+    smallCaption:
+      "Often just a few words and an image. Not a word more.",
   },
   {
     id: "project-four",
@@ -66,6 +84,11 @@ export const projects: Project[] = [
     company: "Motion Laboratory",
     type: "UI/UX Designer",
     status: "Exploration",
+    year: "2025",
+    blurb:
+      "A 9-day design sprint turning a market gap into a validated, gamified fitness tracker — personal goals, community and play in one prototype.",
+    smallCaption:
+      "Familiar formats and native humour people already recognise and want to share.",
   },
 ];
 
