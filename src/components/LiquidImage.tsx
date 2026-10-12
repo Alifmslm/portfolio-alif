@@ -32,8 +32,8 @@ interface LiquidImageProps {
 
 /**
  * Velocity-driven liquid frame.
- * Scroll velocity -> spring -> skew + volume-preserving stretch + RGB ghost offsets.
- * Ghost layers carry static color filters; only transform/opacity animate (GPU cheap).
+ * Scroll velocity -> spring -> skew + volume-preserving stretch.
+ * Only transform animates (GPU cheap).
  */
 export default function LiquidImage({
   src,
@@ -58,25 +58,20 @@ export default function LiquidImage({
     damping: 28,
     mass: 0.6,
   });
-  // Horizontal rail swipe velocity, smoothed to match.
+  // Shared motion value (idle now that the feed scrolls vertically).
   const railSmooth = useSpring(railVelocity, {
     stiffness: 140,
     damping: 28,
     mass: 0.6,
   });
-  // Combined drive: vertical page scroll + horizontal rail swipe.
+  // Combined drive: vertical page scroll + shared rail value.
   const total = useTransform([smooth, railSmooth], (vs: number[]) => vs[0] + vs[1]);
 
   // Liquid bend on the horizontal axis: skew against travel direction, clamped.
   const skew = useTransform(total, [-2800, 2800], [-5, 5]);
-  // RGB split distance in px.
-  const rgb = useTransform(total, [-2600, 2600], [-9, 9]);
-  const rgbNeg = useTransform(rgb, (v) => -v);
   // Liquid stretch with volume preservation (Y stretches, X squeezes).
   const stretchY = useTransform(total, (v) => 1 + Math.min(Math.abs(v) / 7000, 0.07));
   const stretchX = useTransform(stretchY, (s) => 1 - (s - 1) * 0.6);
-  // Ghost visibility: invisible at rest, up to 0.75 while scrolling fast.
-  const ghostOpacity = useTransform(total, (v) => Math.min(Math.abs(v) / 2200, 0.75));
 
   // Staggered horizontal lag so neighbouring frames drift differently (liquid feel).
   // Vertical page scroll drives lateral offset per frame.
@@ -86,10 +81,8 @@ export default function LiquidImage({
   });
   const parallaxX = useTransform(scrollYProgress, [0, 1], [30 * drift, -30 * drift]);
 
-  // Full transform strings = hardware accelerated (no x/y/scale shorthands).
+  // Full transform string = hardware accelerated (no x/y/scale shorthands).
   const frameTransform = useMotionTemplate`translate3d(${parallaxX}, 0px, 0px) skewX(${skew}deg) scale(${stretchX}, ${stretchY})`;
-  const redShift = useMotionTemplate`translate3d(${rgb}, 0px, 0px) scale(1.02)`;
-  const cyanShift = useMotionTemplate`translate3d(${rgbNeg}, 0px, 0px) scale(1.02)`;
 
   const calm = !!reduce;
 
@@ -108,69 +101,14 @@ export default function LiquidImage({
         {placeholder || !src ? (
           <div className={styles.placeholder} style={{ aspectRatio: aspect }} aria-label={alt}>
             <span className={styles.placeholderLabel}>{placeholderLabel}</span>
-            {/* Tinted ghosts for placeholders — same motion, cheap opacity/transform only */}
-            {!calm && (
-              <>
-                <motion.div
-                  aria-hidden="true"
-                  className={`${styles.ghost} ${styles.ghostRed}`}
-                  style={{ transform: redShift, opacity: ghostOpacity }}
-                />
-                <motion.div
-                  aria-hidden="true"
-                  className={`${styles.ghost} ${styles.ghostCyan}`}
-                  style={{ transform: cyanShift, opacity: ghostOpacity }}
-                />
-              </>
-            )}
           </div>
         ) : natural ? (
           <span className={styles.bare}>
             <img src={src} alt={alt} className={`${styles.img} ${styles.imgMain}`} draggable={false} />
-            {!calm && (
-              <>
-                <motion.img
-                  src={src}
-                  alt=""
-                  aria-hidden="true"
-                  draggable={false}
-                  className={`${styles.img} ${styles.ghost} ${styles.ghostRed}`}
-                  style={{ transform: redShift, opacity: ghostOpacity }}
-                />
-                <motion.img
-                  src={src}
-                  alt=""
-                  aria-hidden="true"
-                  draggable={false}
-                  className={`${styles.img} ${styles.ghost} ${styles.ghostCyan}`}
-                  style={{ transform: cyanShift, opacity: ghostOpacity }}
-                />
-              </>
-            )}
           </span>
         ) : (
           <div className={styles.media} style={{ aspectRatio: aspect }}>
             <img src={src} alt={alt} className={styles.img} draggable={false} />
-            {!calm && (
-              <>
-                <motion.img
-                  src={src}
-                  alt=""
-                  aria-hidden="true"
-                  draggable={false}
-                  className={`${styles.img} ${styles.ghost} ${styles.ghostRed}`}
-                  style={{ transform: redShift, opacity: ghostOpacity }}
-                />
-                <motion.img
-                  src={src}
-                  alt=""
-                  aria-hidden="true"
-                  draggable={false}
-                  className={`${styles.img} ${styles.ghost} ${styles.ghostCyan}`}
-                  style={{ transform: cyanShift, opacity: ghostOpacity }}
-                />
-              </>
-            )}
           </div>
         )}
       </motion.div>
