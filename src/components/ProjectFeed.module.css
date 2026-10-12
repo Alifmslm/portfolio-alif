@@ -1,33 +1,17 @@
-/* One horizontal rail of simple image cards scrolling inside its own column. */
+/* Simple vertical stack of image cards. */
 .feed {
   display: flex;
-  flex-direction: row;
-  gap: 40px;
-  align-items: center;
+  flex-direction: column;
+  gap: 48px;
   width: 100%;
-  max-width: none;
-  min-height: calc(100vh - 180px);
-  margin: 0;
-  padding: 4px 0 12px;
-  overflow-x: auto;
-  overflow-y: visible;
-  scroll-snap-type: x proximity;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.feed::-webkit-scrollbar {
-  display: none;
+  min-width: 0;
 }
 
 .card {
-  flex: 0 0 300px;
-  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-width: 0;
-  scroll-snap-align: start;
 }
 
 .title {
@@ -35,7 +19,7 @@
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.01em;
-  color: var(--accent);
+  color: var(--color-red);
   margin: 0;
   text-wrap: balance;
 }
@@ -50,13 +34,7 @@
 
 @media (max-width: 820px) {
   .feed {
-    gap: 32px;
-    min-height: 0;
-  }
-
-  .card {
-    flex-basis: 72vw;
-    width: 72vw;
+    gap: 40px;
   }
 
   .title {
