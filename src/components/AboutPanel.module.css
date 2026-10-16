@@ -1,0 +1,57 @@
+/* About tab panel — scrolls like the project feed. Class names are
+   deliberately prefixed `aboutPanel` to distinguish this switchable tab
+   content from the sidebar "about me" section. */
+.aboutPanel {
+  flex: 1 1 auto;
+  min-height: 0;
+  box-sizing: border-box;
+  padding-bottom: 48px;
+  overflow-y: auto;
+  overflow-x: clip;
+  overscroll-behavior: contain;
+}
+
+.aboutPanelGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.aboutPanelCard {
+  background: #f7f7f7;
+  border-radius: 8px;
+  padding: 20px;
+  min-height: 180px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.aboutPanelBar {
+  display: block;
+  height: 10px;
+  border-radius: 5px;
+  background: #e3e3e3;
+}
+
+:root[data-theme="dark"] .aboutPanelCard {
+  background: #1c1c1c;
+}
+
+:root[data-theme="dark"] .aboutPanelBar {
+  background: #2e2e2e;
+}
+
+@media (max-width: 820px) {
+  .aboutPanel {
+    overflow: visible;
+  }
+}
+
+@media (max-width: 560px) {
+  .aboutPanelGrid {
+    grid-template-columns: 1fr;
+  }
+}

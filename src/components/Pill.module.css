@@ -12,3 +12,9 @@
   user-select: none;
   text-decoration: none;
 }
+
+.active {
+  background: var(--pill-hover-bg);
+  border-color: var(--pill-hover-bg);
+  color: var(--pill-hover-fg);
+}
