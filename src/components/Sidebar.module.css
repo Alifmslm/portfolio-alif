@@ -1,12 +1,14 @@
 .sidebar {
-  position: sticky;
-  top: 48px;
+  /* Safe vertical centering: auto margins center when there is spare
+     room but still allow scrolling to the very top when content
+     overflows (unlike align-self: center, which clips the top). */
   align-self: start;
+  margin-top: auto;
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-height: calc(100vh - 96px);
-  overflow-y: auto;
+  gap: 14px;
+  min-width: 0;
 }
 
 .identity h1 {
@@ -88,5 +90,19 @@
   .sidebar {
     position: static;
     max-height: none;
+  }
+}
+
+/* Shorter desktop viewports: tighten the about column further so the
+   full content still fits in 100dvh with no scrolling. */
+@media (min-width: 821px) and (max-height: 800px) {
+  .sidebar {
+    gap: 10px;
+  }
+
+  .orb {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 8px;
   }
 }

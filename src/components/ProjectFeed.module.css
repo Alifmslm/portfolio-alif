@@ -1,4 +1,4 @@
-/* Simple vertical stack of image cards. */
+/* Simple vertical stack of image cards with its own internal scroll. */
 .feed {
   display: flex;
   flex-direction: column;
@@ -6,8 +6,12 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
+  height: 100%;
+  min-height: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  padding-bottom: 48px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .card {
@@ -56,6 +60,8 @@
 @media (max-width: 820px) {
   .feed {
     gap: 40px;
+    height: auto;
+    overflow: visible;
   }
 
   .title {
