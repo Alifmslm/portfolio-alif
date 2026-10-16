@@ -1,5 +1,5 @@
 .section {
-  margin-top: 16px;
+  margin-top: 32px;
 }
 
 .heading {
@@ -162,11 +162,11 @@
    column still fits in 100dvh with no scrolling. */
 @media (min-width: 821px) and (max-height: 800px) {
   .section {
-    margin-top: 12px;
+    margin-top: 32px;
   }
 
   .item {
-    padding: 6px 0;
+    padding: 4px 0;
   }
 }
 

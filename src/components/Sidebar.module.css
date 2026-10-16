@@ -1,10 +1,7 @@
 .sidebar {
-  /* Safe vertical centering: auto margins center when there is spare
-     room but still allow scrolling to the very top when content
-     overflows (unlike align-self: center, which clips the top). */
+  /* Top-aligned: content starts at the top of the viewport row so the
+     full about column reads from the top with no scrolling. */
   align-self: start;
-  margin-top: auto;
-  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   gap: 14px;
