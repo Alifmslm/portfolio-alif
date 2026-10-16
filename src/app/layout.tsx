@@ -1,12 +1,12 @@
-import "@fontsource/stack-sans-text/200.css";
-import "@fontsource/stack-sans-text/300.css";
-import "@fontsource/stack-sans-text/400.css";
-import "@fontsource/stack-sans-text/500.css";
-import "@fontsource/stack-sans-text/600.css";
-import "@fontsource/stack-sans-text/700.css";
+import { Geist } from "next/font/google";
 import type { Metadata } from "next";
 import ClickRipple from "@/components/ClickRipple";
 import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "alifolioo",
@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={geistSans.variable}>
       <body suppressHydrationWarning>
         {children}
         <ClickRipple />

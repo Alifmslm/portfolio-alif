@@ -18,6 +18,27 @@
   min-height: 0;
 }
 
+/* Right column: pinned tab nav on top, switchable scrollable panel below. */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  min-height: 0;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Switchable panel wrapper — takes the scroll sizing role so the
+   animated feed / about panels inside just fill it. */
+.panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
 @media (max-width: 820px) {
   .layout {
     grid-template-columns: 1fr;
@@ -26,5 +47,9 @@
     padding: 32px 20px;
     height: auto;
     overflow: visible;
+  }
+
+  .main {
+    height: auto;
   }
 }

@@ -9,11 +9,12 @@ type PillProps = {
   asLink?: boolean;
   href?: string;
   onClick?: () => void;
+  active?: boolean;
 };
 
-export default function Pill({ children, asLink, href, onClick }: PillProps) {
+export default function Pill({ children, asLink, href, onClick, active }: PillProps) {
   const motionProps = {
-    className: styles.pill,
+    className: active ? `${styles.pill} ${styles.active}` : styles.pill,
     whileHover: {
       scale: 1.04,
       backgroundColor: "var(--pill-hover-bg)",
@@ -33,7 +34,7 @@ export default function Pill({ children, asLink, href, onClick }: PillProps) {
   }
 
   return (
-    <motion.button type="button" onClick={onClick} {...motionProps}>
+    <motion.button type="button" onClick={onClick} aria-pressed={active} {...motionProps}>
       {children}
     </motion.button>
   );

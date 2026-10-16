@@ -1,0 +1,60 @@
+.track {
+  position: relative;
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 3px;
+  border-radius: 999px;
+  background: #101010;
+  border: 1px solid #262626;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  border-radius: 999px;
+  background: #ffffff;
+  will-change: transform;
+}
+
+.option {
+  position: relative;
+  z-index: 1;
+  flex: 1 1 0;
+  padding: 7px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #8e8e93;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 150ms ease;
+}
+
+.option:hover {
+  color: #c7c7cc;
+}
+
+.optionActive {
+  color: #000000;
+}
+
+.optionActive:hover {
+  color: #000000;
+}
+
+.option:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option {
+    transition: none;
+  }
+}
