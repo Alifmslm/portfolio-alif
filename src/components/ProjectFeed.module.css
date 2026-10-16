@@ -4,14 +4,31 @@
   flex-direction: column;
   gap: 48px;
   width: 100%;
+  max-width: 100%;
   min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.cover {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  background: var(--cover-bg);
+  object-fit: cover;
 }
 
 .title {
@@ -19,9 +36,11 @@
   font-weight: 600;
   line-height: 1.4;
   letter-spacing: -0.01em;
-  color: var(--color-red);
+  color: var(--fg);
   margin: 0;
   text-wrap: balance;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 .role {
@@ -30,6 +49,8 @@
   letter-spacing: 0.04em;
   color: var(--muted);
   margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 820px) {
