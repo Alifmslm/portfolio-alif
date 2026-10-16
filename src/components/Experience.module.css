@@ -60,7 +60,7 @@
 .text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   min-width: 0;
   padding-top: 1px;
 }
