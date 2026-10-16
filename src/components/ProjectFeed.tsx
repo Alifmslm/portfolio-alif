@@ -14,8 +14,10 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
               draggable={false}
             />
           </span>
-          <h2 className={styles.title}>{project.title}</h2>
-          <p className={styles.role}>{project.type}</p>
+          <div className={styles.info}>
+            <h2 className={styles.title}>{project.title}</h2>
+            <p className={styles.role}>{project.type}</p>
+          </div>
         </article>
       ))}
     </section>

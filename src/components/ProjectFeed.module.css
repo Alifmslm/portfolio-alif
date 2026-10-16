@@ -68,6 +68,13 @@
   overflow-wrap: break-word;
 }
 
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
 .role {
   font-size: 12px;
   font-weight: 400;
