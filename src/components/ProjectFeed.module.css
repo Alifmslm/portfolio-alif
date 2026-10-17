@@ -1,8 +1,8 @@
-/* Simple vertical stack of image cards with its own internal scroll. */
+/* Project feed: header + blurb + horizontal media carousel + tags. */
 .feed {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 48px;
   width: 100%;
   max-width: 100%;
@@ -20,41 +20,35 @@
   flex: 0 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
   width: 100%;
-  max-width: 540px;
+  max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
 }
 
-.cover {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  transition: transform 250ms var(--ease-out);
+/* Text beside the media carousel. */
+.row {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  min-width: 0;
 }
 
-.media {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--cover-bg);
-  line-height: 0;
+.textBlock {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .media:hover .cover {
-    transform: scale(1.03);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cover {
-    transition: none;
-  }
+/* Text block above the media. */
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 
 .title {
@@ -69,11 +63,80 @@
   overflow-wrap: break-word;
 }
 
-.info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.subheading {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.blurb {
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.5em;
+  color: var(--muted);
+  margin: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+/* Horizontal media carousel — scrolls inside its own box, snap to each
+   slide. Media slots keep the shared 8px radius. */
+.carousel {
+  flex: 0 0 54%;
   min-width: 0;
+}
+
+.track {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  border-radius: 8px;
+}
+
+.slidePlaceholder {
+  flex: 0 0 90%;
+  scroll-snap-align: start;
+  min-width: 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  background: var(--cover-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+.placeholderIcon {
+  opacity: 0.5;
+}
+
+/* Detail tags — centered under the media carousel column (same 54%
+   width, right-aligned so it overlays the carousel horizontally). */
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-self: flex-end;
+  width: 54%;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  border-radius: 5px;
+  padding: 4px 10px;
 }
 
 /* First-open entrance: fade + rise, staggered per card. */
@@ -110,16 +173,6 @@
   }
 }
 
-.role {
-  font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  margin: 0;
-  max-width: 100%;
-  overflow-wrap: break-word;
-}
-
 @media (max-width: 820px) {
   .feed {
     gap: 40px;
@@ -129,5 +182,25 @@
 
   .title {
     font-size: 14px;
+  }
+
+  .row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .carousel {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .tags {
+    align-self: stretch;
+    width: auto;
+    justify-content: center;
+  }
+
+  .slidePlaceholder {
+    flex-basis: 85%;
   }
 }
