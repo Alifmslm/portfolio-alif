@@ -3,6 +3,7 @@
 import { Profile, Project } from "@/lib/data";
 import Sidebar from "./Sidebar";
 import ProjectFeed from "./ProjectFeed";
+import IntroSplash from "./IntroSplash";
 import styles from "../app/page.module.css";
 
 interface PortfolioViewProps {
@@ -13,6 +14,7 @@ interface PortfolioViewProps {
 export default function PortfolioView({ profile, projects }: PortfolioViewProps) {
   return (
     <main className={styles.layout}>
+      <IntroSplash />
       <Sidebar profile={profile} />
       <div className={styles.main}>
         <ProjectFeed projects={projects} />
