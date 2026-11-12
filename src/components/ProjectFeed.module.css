@@ -10,6 +10,7 @@
   flex: 1 1 auto;
   min-height: 0;
   box-sizing: border-box;
+  padding-bottom: 32px;
   overflow-y: auto;
   overflow-x: clip;
   overscroll-behavior: contain;
@@ -24,6 +25,10 @@
   max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+}
+
+.card:first-child {
+  margin-top: 40px;
 }
 
 /* Text beside the media carousel. */
@@ -113,15 +118,11 @@
   opacity: 0.5;
 }
 
-/* Detail tags — centered under the media carousel column (same 54%
-   width, right-aligned so it overlays the carousel horizontally). */
+/* Pills under the project description — role + status. */
 .tags {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  align-self: flex-end;
-  width: 54%;
   gap: 8px;
   margin: 0;
   padding: 0;
@@ -131,10 +132,11 @@
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.03em;
+  line-height: 1.4;
   color: var(--muted);
   background: var(--pill-bg);
   border: 1px solid var(--pill-border);
-  border-radius: 5px;
+  border-radius: 999px;
   padding: 4px 10px;
 }
 
@@ -179,6 +181,10 @@
     overflow: visible;
   }
 
+  .card:first-child {
+    margin-top: 0;
+  }
+
   .title {
     font-size: 14px;
   }
@@ -191,12 +197,6 @@
   .carousel {
     flex-basis: auto;
     width: 100%;
-  }
-
-  .tags {
-    align-self: stretch;
-    width: auto;
-    justify-content: center;
   }
 
   .slidePlaceholder {

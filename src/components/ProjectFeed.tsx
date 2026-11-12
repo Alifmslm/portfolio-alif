@@ -33,6 +33,10 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
                 </p>
               </header>
               <p className={styles.blurb}>{project.blurb}</p>
+              <ul className={styles.tags} aria-label="Project details">
+                <li className={styles.tag}>{project.type}</li>
+                <li className={styles.tag}>{project.status}</li>
+              </ul>
             </div>
             <div
               className={styles.carousel}
@@ -54,10 +58,6 @@ export default function ProjectFeed({ projects }: { projects: Project[] }) {
               </div>
             </div>
           </div>
-          <ul className={styles.tags} aria-label="Project details">
-            <li className={styles.tag}>{project.type}</li>
-            <li className={styles.tag}>{project.status}</li>
-          </ul>
         </article>
       ))}
     </section>
