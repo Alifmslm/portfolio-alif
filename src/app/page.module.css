@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 400px minmax(0, 1fr);
   grid-template-rows: minmax(0, 1fr);
-  gap: 56px;
+  gap: 24px;
   margin: 0;
   padding: 0 0 0 32px;
   width: 100%;
@@ -26,6 +26,8 @@
   min-height: 0;
   min-width: 0;
   max-width: 100%;
+  border-left: 1px solid var(--border);
+  padding-left: 32px;
 }
 
 @media (max-width: 820px) {
@@ -40,5 +42,7 @@
 
   .main {
     height: auto;
+    border-left: none;
+    padding-left: 0;
   }
 }

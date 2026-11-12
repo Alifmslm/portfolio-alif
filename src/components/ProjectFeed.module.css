@@ -114,6 +114,10 @@
   color: var(--muted);
 }
 
+.slidePlaceholder:last-child {
+  margin-right: 12px;
+}
+
 .placeholderIcon {
   opacity: 0.5;
 }
