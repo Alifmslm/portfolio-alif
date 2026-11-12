@@ -1,0 +1,76 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--bg);
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 250ms var(--ease-out),
+    transform 250ms var(--ease-out);
+}
+
+.leaving {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+.pill {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.28em;
+  max-width: min(92vw, 680px);
+  padding: 22px 54px;
+  border-radius: 999px;
+  border: none;
+  background: var(--pill-bg);
+  font-size: clamp(26px, 5vw, 44px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--fg);
+  text-align: center;
+}
+
+.word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: word-in 300ms var(--ease-out) forwards;
+}
+
+@keyframes word-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay {
+    transition: opacity 200ms ease;
+  }
+
+  .leaving {
+    transform: none;
+  }
+
+  .word {
+    animation-duration: 200ms;
+    animation-delay: 0ms !important;
+    transform: none;
+  }
+
+  @keyframes word-in {
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
