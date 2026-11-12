@@ -118,26 +118,93 @@
   opacity: 0.5;
 }
 
-/* Pills under the project description — role + status. */
-.tags {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
+/* Status indicator above the project title — plain text with a dot,
+   no container. */
+.statusRow {
+  margin: 0 0 4px;
 }
 
-.tag {
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.03em;
   line-height: 1.4;
-  color: var(--muted);
-  background: var(--pill-bg);
-  border: 1px solid var(--pill-border);
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.shipped {
+  color: #16a34a;
+}
+
+.exploration {
+  color: #db2777;
+}
+
+/* Open-project pill button. */
+.openRow {
+  margin: 0;
+}
+
+.openButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--bg);
+  background: var(--fg);
+  border: 1px solid var(--fg);
   border-radius: 999px;
-  padding: 4px 10px;
+  padding: 6px 12px;
+  text-decoration: none;
+  transition:
+    opacity 150ms ease-out,
+    transform 160ms var(--ease-out);
+}
+
+.openButton svg {
+  transition: transform 180ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .openButton:hover svg {
+    transform: translate(2px, -2px);
+  }
+}
+
+.openButton:active {
+  transform: scale(0.97);
+}
+
+.openButton:focus-visible {
+  outline: 2px solid var(--color-red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .openButton,
+  .openButton svg {
+    transition: opacity 150ms ease-out;
+  }
+
+  .openButton:hover svg {
+    transform: none;
+  }
+
+  .openButton:active {
+    transform: none;
+  }
 }
 
 /* First-open entrance: fade + rise, staggered per card. */
