@@ -5,11 +5,15 @@ import styles from "./IntroSplash.module.css";
 
 const STAGGER_MS = 70;
 const WORD_MS = 300;
-const HOLD_MS = 2500;
+const HOLD_MS = 210;
 const EXIT_MS = 250;
 const STORAGE_KEY = "intro-seen-v1";
 
-const WORDS = ["Engineer", "with", "taste.", "Designer", "who", "ships."];
+const LINES = [
+  ["Engineer", "with", "taste."],
+  ["Designer", "who", "ships."],
+];
+const WORDS = LINES.flat();
 
 export default function IntroSplash() {
   const [mounted, setMounted] = useState(true);
@@ -42,7 +46,15 @@ export default function IntroSplash() {
   }, []);
 
   useEffect(() => {
-    if (mounted) shownAtRef.current = Date.now();
+    if (!mounted) return;
+    shownAtRef.current = Date.now();
+    // Mark seen on first paint, not on unmount: any reload from here on —
+    // even mid-splash — is a usual reload with no splash.
+    try {
+      window.localStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      /* storage unavailable — splash may show again next visit */
+    }
   }, [mounted]);
 
   useEffect(() => {
@@ -59,11 +71,6 @@ export default function IntroSplash() {
     if (!mounted || !leaving) return;
     const t = window.setTimeout(() => {
       setMounted(false);
-      try {
-        window.localStorage.setItem(STORAGE_KEY, "1");
-      } catch {
-        /* storage unavailable — show again next visit */
-      }
     }, EXIT_MS);
     return () => window.clearTimeout(t);
   }, [mounted, leaving]);
@@ -96,15 +103,22 @@ export default function IntroSplash() {
       aria-label="Engineer with taste. Designer who ships."
     >
       <p className={styles.pill}>
-        {WORDS.map((word, i) => (
-          <span
-            key={`${word}-${i}`}
-            className={styles.word}
-            style={{ animationDelay: `${i * STAGGER_MS}ms` }}
-          >
-            {word}
-          </span>
-        ))}
+        {LINES.map((line, li) => {
+          const base = LINES.slice(0, li).reduce((n, l) => n + l.length, 0);
+          return (
+            <span key={li} className={styles.line}>
+              {line.map((word, i) => (
+                <span
+                  key={`${word}-${base + i}`}
+                  className={styles.word}
+                  style={{ animationDelay: `${(base + i) * STAGGER_MS}ms` }}
+                >
+                  {word}
+                </span>
+              ))}
+            </span>
+          );
+        })}
       </p>
     </div>
   );
