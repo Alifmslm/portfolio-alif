@@ -21,11 +21,9 @@
 
 .pill {
   display: inline-flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  gap: 0.28em;
-  width: max-content;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   max-width: min(92vw, 680px);
   padding: 22px 54px;
   border-radius: 999px;
@@ -37,6 +35,26 @@
   line-height: 1.15;
   color: var(--fg);
   text-align: center;
+}
+
+.line {
+  display: block;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.word:not(:last-child) {
+  margin-right: 0.28em;
+}
+
+@media (max-width: 560px) {
+  .pill {
+    padding: 16px 28px;
+  }
+
+  .line {
+    white-space: normal;
+  }
 }
 
 .word {
